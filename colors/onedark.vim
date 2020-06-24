@@ -142,6 +142,7 @@ let s:purple = s:colors.purple
 let s:cyan = s:colors.cyan
 let s:white = s:colors.white
 let s:black = s:colors.black
+let s:bg = s:colors.bg
 let s:visual_black = s:colors.visual_black " Black out selected text in 16-color visual mode
 let s:comment_grey = s:colors.comment_grey
 let s:gutter_fg_grey = s:colors.gutter_fg_grey
@@ -170,25 +171,31 @@ call s:h("Comment", { "fg": s:comment_grey, "gui": "italic", "cterm": "italic" }
 call s:h("Constant", { "fg": s:cyan }) " any constant
 call s:h("String", { "fg": s:green }) " a string constant: "this is a string"
 call s:h("Character", { "fg": s:green }) " a character constant: 'c', '\n'
-call s:h("Number", { "fg": s:dark_yellow }) " a number constant: 234, 0xff
-call s:h("Boolean", { "fg": s:dark_yellow }) " a boolean constant: TRUE, false
-call s:h("Float", { "fg": s:dark_yellow }) " a floating point constant: 2.3e10
-call s:h("Identifier", { "fg": s:red }) " any variable name
+call s:h("Number", { "fg": s:yellow }) " a number constant: 234, 0xff
+call s:h("Boolean", { "fg": s:yellow }) " a boolean constant: TRUE, false
+call s:h("Float", { "fg": s:yellow }) " a floating point constant: 2.3e10
+call s:h("Identifier", { "fg": s:white }) " any variable name
 call s:h("Function", { "fg": s:blue }) " function name (also: methods for classes)
-call s:h("Statement", { "fg": s:purple }) " any statement
-call s:h("Conditional", { "fg": s:purple }) " if, then, else, endif, switch, etc.
-call s:h("Repeat", { "fg": s:purple }) " for, do, while, etc.
-call s:h("Label", { "fg": s:purple }) " case, default, etc.
-call s:h("Operator", { "fg": s:purple }) " sizeof", "+", "*", etc.
+" call s:h("Statement", { "fg": s:purple }) " any statement
+call s:h("Statement", { "fg": s:blue }) " any statement
+" call s:h("Conditional", { "fg": s:purple }) " if, then, else, endif, switch, etc.
+call s:h("Conditional", { "fg": s:blue }) " if, then, else, endif, switch, etc.
+" call s:h("Repeat", { "fg": s:purple }) " for, do, while, etc.
+call s:h("Repeat", { "fg": s:blue }) " for, do, while, etc.
+" call s:h("Label", { "fg": s:purple }) " case, default, etc.
+call s:h("Label", { "fg": s:blue }) " case, default, etc.
+" call s:h("Operator", { "fg": s:purple }) " sizeof", "+", "*", etc.
+call s:h("Operator", { "fg": s:blue }) " sizeof", "+", "*", etc.
 call s:h("Keyword", { "fg": s:red }) " any other keyword
-call s:h("Exception", { "fg": s:purple }) " try, catch, throw
+call s:h("Exception", { "fg": s:blue }) " try, catch, throw
 call s:h("PreProc", { "fg": s:yellow }) " generic Preprocessor
 call s:h("Include", { "fg": s:blue }) " preprocessor #include
 call s:h("Define", { "fg": s:purple }) " preprocessor #define
 call s:h("Macro", { "fg": s:purple }) " same as Define
 call s:h("PreCondit", { "fg": s:yellow }) " preprocessor #if, #else, #endif, etc.
 call s:h("Type", { "fg": s:yellow }) " int, long, char, etc.
-call s:h("StorageClass", { "fg": s:yellow }) " static, register, volatile, etc.
+" call s:h("StorageClass", { "fg": s:yellow }) " static, register, volatile, etc.
+call s:h("StorageClass", { "fg": s:white }) " static, register, volatile, etc.
 call s:h("Structure", { "fg": s:yellow }) " struct, union, enum, etc.
 call s:h("Typedef", { "fg": s:yellow }) " A typedef
 call s:h("Special", { "fg": s:blue }) " any special symbol
@@ -237,7 +244,7 @@ call s:h("MatchParen", { "fg": s:blue, "gui": "underline", "cterm": "underline" 
 call s:h("ModeMsg", {}) " 'showmode' message (e.g., "-- INSERT --")
 call s:h("MoreMsg", {}) " more-prompt
 call s:h("NonText", { "fg": s:special_grey }) " '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
-call s:h("Normal", { "fg": s:white, "bg": s:black }) " normal text
+call s:h("Normal", { "fg": s:white, "bg": s:bg }) " normal text
 call s:h("Pmenu", { "bg": s:menu_grey }) " Popup menu: normal item.
 call s:h("PmenuSel", { "fg": s:black, "bg": s:blue }) " Popup menu: selected item.
 call s:h("PmenuSbar", { "bg": s:special_grey }) " Popup menu: scrollbar.
@@ -290,12 +297,12 @@ call s:h("cssIdentifier", { "fg": s:blue })
 call s:h("cssImportant", { "fg": s:purple })
 call s:h("cssInclude", { "fg": s:white })
 call s:h("cssIncludeKeyword", { "fg": s:purple })
-call s:h("cssMediaType", { "fg": s:dark_yellow })
+call s:h("cssMediaType", { "fg": s:cyan })
 call s:h("cssProp", { "fg": s:white })
 call s:h("cssPseudoClassId", { "fg": s:dark_yellow })
 call s:h("cssSelectorOp", { "fg": s:purple })
 call s:h("cssSelectorOp2", { "fg": s:purple })
-call s:h("cssTagName", { "fg": s:red })
+call s:h("cssTagName", { "fg": s:blue })
 
 " Fish Shell
 call s:h("fishKeyword", { "fg": s:purple })
@@ -336,11 +343,11 @@ call s:h("htmlTitle", { "fg": s:white })
 " JavaScript
 call s:h("javaScriptBraces", { "fg": s:white })
 call s:h("javaScriptFunction", { "fg": s:purple })
-call s:h("javaScriptIdentifier", { "fg": s:purple })
-call s:h("javaScriptNull", { "fg": s:dark_yellow })
-call s:h("javaScriptNumber", { "fg": s:dark_yellow })
+call s:h("javaScriptIdentifier", { "fg": s:blue })
+call s:h("javaScriptNull", { "fg": s:yellow })
+call s:h("javaScriptNumber", { "fg": s:yellow })
 call s:h("javaScriptRequire", { "fg": s:cyan })
-call s:h("javaScriptReserved", { "fg": s:purple })
+call s:h("javaScriptReserved", { "fg": s:blue })
 " https://github.com/pangloss/vim-javascript
 call s:h("jsArrowFunction", { "fg": s:purple })
 call s:h("jsClassKeyword", { "fg": s:purple })
@@ -378,7 +385,6 @@ call s:h("javascriptEndColons", { "fg": s:white })
 call s:h("javascriptExport", { "fg": s:purple })
 call s:h("javascriptFuncArg", { "fg": s:white })
 call s:h("javascriptFuncKeyword", { "fg": s:purple })
-call s:h("javascriptIdentifier", { "fg": s:red })
 call s:h("javascriptImport", { "fg": s:purple })
 call s:h("javascriptMethodName", { "fg": s:white })
 call s:h("javascriptObjectLabel", { "fg": s:white })
@@ -392,7 +398,7 @@ call s:h("javascriptVariable", { "fg": s:purple })
 call s:h("jsonCommentError", { "fg": s:white })
 call s:h("jsonKeyword", { "fg": s:red })
 call s:h("jsonBoolean", { "fg": s:dark_yellow })
-call s:h("jsonNumber", { "fg": s:dark_yellow })
+call s:h("jsonNumber", { "fg": s:yellow })
 call s:h("jsonQuote", { "fg": s:white })
 call s:h("jsonMissingCommaError", { "fg": s:red, "gui": "reverse" })
 call s:h("jsonNoQuotesError", { "fg": s:red, "gui": "reverse" })
@@ -448,19 +454,22 @@ call s:h("perlSubName",{ "fg": s:yellow })
 call s:h("perlVarPlain",{ "fg": s:blue })
 
 " PHP
-call s:h("phpVarSelector", { "fg": s:red })
-call s:h("phpOperator", { "fg": s:white })
+call s:h("phpVarSelector", { "fg": s:white })
+call s:h("phpOperator", { "fg": s:purple })
 call s:h("phpParent", { "fg": s:white })
-call s:h("phpMemberSelector", { "fg": s:white })
-call s:h("phpType", { "fg": s:purple })
-call s:h("phpKeyword", { "fg": s:purple })
-call s:h("phpClass", { "fg": s:yellow })
+call s:h("phpMemberSelector", { "fg": s:purple })
+" call s:h("phpType", { "fg": s:purple })
+call s:h("phpType", { "fg": s:blue })
+" call s:h("phpKeyword", { "fg": s:purple })
+call s:h("phpKeyword", { "fg": s:blue })
+call s:h("phpClass", { "fg": s:white })
 call s:h("phpUseClass", { "fg": s:white })
 call s:h("phpUseAlias", { "fg": s:white })
-call s:h("phpInclude", { "fg": s:purple })
+" call s:h("phpInclude", { "fg": s:purple })
+call s:h("phpInclude", { "fg": s:blue })
 call s:h("phpClassExtends", { "fg": s:green })
 call s:h("phpDocTags", { "fg": s:white })
-call s:h("phpFunction", { "fg": s:blue })
+call s:h("phpFunction", { "fg": s:purple })
 call s:h("phpFunctions", { "fg": s:cyan })
 call s:h("phpMethodsVar", { "fg": s:dark_yellow })
 call s:h("phpMagicConstants", { "fg": s:dark_yellow })
